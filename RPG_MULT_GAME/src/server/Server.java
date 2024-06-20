@@ -102,7 +102,10 @@ public class Server extends Thread {
 		while (e.hasMoreElements()) {
 			PrintStream chat = (PrintStream) e.nextElement();
 			if (chat != saida) {
-				
+				//CHECAR SE ALGUM JOGADOR SE DESCONECTOU
+				if(linha.equalsIgnoreCase("disconnect")) {
+					numeroJogadores--;
+				}
 				chat.println((myId-1)+ "," + linha);
 			}
 		}

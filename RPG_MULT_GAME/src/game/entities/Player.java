@@ -18,7 +18,7 @@ public class Player extends Entity{
 		this.id = id;
 		this.ps = ps;
 		this.mwidth = 6;
-		this.mheight = 3;
+		this.mheight = 8;
 	}
 	
 	public void tick() {		
