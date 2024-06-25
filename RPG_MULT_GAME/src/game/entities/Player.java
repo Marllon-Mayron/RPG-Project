@@ -45,8 +45,8 @@ public class Player extends Entity{
 		}
 	}
 	public void CheckInterations() {
-		for(int i = 0; i < Game.entities.size(); i++) {
-			Entity e = Game.entities.get(i);
+		for(int i = 0; i < Game.players.size(); i++) {
+			Entity e = Game.players.get(i);
 			if(e instanceof Player && (!e.equals(this))) {
 				if(Entity.isCollidding(e, this)) {
 					//System.out.println("COLISÃO");

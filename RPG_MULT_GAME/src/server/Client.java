@@ -34,15 +34,25 @@ public class Client extends Thread {
 					int id = Integer.parseInt(entrada.readLine());
 					Player newPlayer = new Player(id, 0, 0, 6, 12, null, null);
 					newPlayer.setName(entrada.readLine());
-					Game.entities.add(newPlayer);
+					Game.players.add(newPlayer);
 				}else {
 					String[] msg = linha.split(",");
 					if(msg[1].equals("walk")) {
 						//AQUI EU SEPARO AS INFORMAÇÕES, E PASSO O X E Y
-						Game.entities.get(Integer.parseInt(msg[0])).setX(Integer.parseInt(msg[2]));
-						Game.entities.get(Integer.parseInt(msg[0])).setY(Integer.parseInt(msg[3]));
+						for(int i = 0; i < Game.players.size(); i++) {
+							if(Game.players.get(i).id == Integer.parseInt(msg[0])) {
+								Game.players.get(i).setX(Integer.parseInt(msg[2]));
+								Game.players.get(i).setY(Integer.parseInt(msg[3]));
+							}
+						}
+						
 					}else if(msg[1].equals("disconnect")) {
-						Game.entities.remove(Integer.parseInt(msg[0]));
+						for(int i = 0; i < Game.players.size(); i++) {
+							if(Game.players.get(i).id == Integer.parseInt(msg[0])) {
+								Game.players.remove(Game.players.get(i));
+							}
+						}
+						
 					}
 				}
 				

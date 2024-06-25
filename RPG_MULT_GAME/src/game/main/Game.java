@@ -43,8 +43,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private BufferedImage image;
 	private Graphics g;
 	// objetos
+	public static List<Player> players;
 	public static List<Entity> entities;
-
 	public static Random random;
 
 	public Player player;
@@ -62,7 +62,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		this.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		initFrame();
 
-		entities = new ArrayList<Entity>();
+		players = new ArrayList<Player>();
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 		Socket conexao = new Socket("localhost", 8090);
@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		for (int i = 0; i < n - 1; i++) {
 			Player playerCarregado = new Player(i + 1, 0, 0, 6, 12, null, null);
 			playerCarregado.setName(entrada.readLine());
-			entities.add(playerCarregado);
+			players.add(playerCarregado);
 		}
 
 		// CRIANDO UMA THREAD PARA CUIDADR DESSE CLIENTE, TAMBEM ESTOU PASSANDO A CLASSE
@@ -91,7 +91,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		// CRIANDO O JOGADOR
 		player = new Player(n, 0, 0, 6, 12, null, saida);
 		player.setName(meuNome);
-		entities.add(player);
+		players.add(player);
 	}
 
 	// Cria��o da Janela
@@ -136,8 +136,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	public void tick() {
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
+		for (int i = 0; i < players.size(); i++) {
+			Player e = players.get(i);
 			e.tick();
 		}
 	}
@@ -154,8 +154,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		g.setColor(new Color(0, 0, 0));
 		g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
 
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
+		for (int i = 0; i < players.size(); i++) {
+			Player e = players.get(i);
 			e.render(g);
 		}
 
@@ -163,9 +163,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
 		g.setColor(Color.white);
-		g.drawString("Jogadores: " + entities.size(), 0, 10);
-		for (int i = 0; i < entities.size(); i++) {
-			Entity e = entities.get(i);
+		g.drawString("Jogadores: " + players.size(), 0, 10);
+		for (int i = 0; i < players.size(); i++) {
+			Player e = players.get(i);
 			e.renderText(g);
 		}
 		

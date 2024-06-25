@@ -103,7 +103,7 @@ public class Server extends Thread {
 			PrintStream chat = (PrintStream) e.nextElement();
 			if (chat != saida) {
 				
-				chat.println((myId-1)+ "," + linha);
+				chat.println((myId)+ "," + linha);
 			}
 		}
 	}
