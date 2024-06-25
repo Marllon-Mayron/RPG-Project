@@ -69,13 +69,13 @@ public class Entity {
 		
 		e1Mask.x = (int)e1.x;
 		e1Mask.y = (int)e1.y;
-		e1Mask.width = e1.width;
-		e1Mask.height = e1.height;
+		e1Mask.width = e1.mwidth;
+		e1Mask.height = e1.mheight;
 		
 		e2Mask.x = (int)e2.x;
 		e2Mask.y = (int)e2.y;
-		e2Mask.width = e2.width;
-		e2Mask.height = e2.height;
+		e2Mask.width = e2.mwidth;
+		e2Mask.height = e2.mheight;
 		
 		return e1Mask.intersects(e2Mask);
 	}

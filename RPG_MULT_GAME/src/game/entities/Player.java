@@ -24,7 +24,7 @@ public class Player extends Entity{
 	public void tick() {		
 		positionUpdates();
 
-		CheckInterations();
+		//CheckInterations();
 	}
 	
 	//METODO USADO PRA ATUALIZAR AS POSICOES DOS JOGADORES
@@ -49,7 +49,7 @@ public class Player extends Entity{
 			Entity e = Game.players.get(i);
 			if(e instanceof Player && (!e.equals(this))) {
 				if(Entity.isCollidding(e, this)) {
-					//System.out.println("COLISÃO");
+					System.out.println("SERVIDOR DETECTOU COLISÃO");
 				}
 				
 			}

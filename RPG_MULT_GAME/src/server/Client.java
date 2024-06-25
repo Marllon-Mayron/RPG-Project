@@ -43,6 +43,7 @@ public class Client extends Thread {
 							if(Game.players.get(i).id == Integer.parseInt(msg[0])) {
 								Game.players.get(i).setX(Integer.parseInt(msg[2]));
 								Game.players.get(i).setY(Integer.parseInt(msg[3]));
+								Game.players.get(i).CheckInterations();
 							}
 						}
 						

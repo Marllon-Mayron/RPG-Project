@@ -108,7 +108,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			//ACÕES ANTES DE DISCONECTAR
             @Override
             public void windowClosing(WindowEvent e) {
-        		player.disconnect();
+            	if(player != null) {
+            		player.disconnect();
+            	}
                 frame.dispose();
             }
         });
